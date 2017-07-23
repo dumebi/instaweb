@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <!-- Head partial -->
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <!-- Header partial -->
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <div class="ui grid container">
+        <div class="ui two column centered grid">
+            <div class="column">
+                <!-- Enctype is multipart to support file upload -->
+                <form action="/create" method="post" enctype="multipart/form-data" class="ui form">
+                    <div class="field">
+                        <label>Title</label>
+                        <input name="title" type="text" placeholder="Title" />
+                    </div>
+                    <div class="field">
+                        <label>Description</label>
+                        <textarea rows="4" name="description" placeholder="Description"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>Image</label>
+                        <input name="image" type="file" />
+                    </div>
+                    <button class="ui primary button" type="submit">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Scripts partial -->
+<% include ../partials/scripts %>
+</body>
+</html>
