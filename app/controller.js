@@ -71,5 +71,36 @@ module.exports = {
 
                 res.redirect('/');
             })
+    },
+    find: function (req, res) {
+        let id = req.params.id;
+        Model.findOne({image_id: id}, function (err, post) {
+            if (err) res.send(err);
+
+            res.render('pages/single', {post: post, image: cloudinary.image, image_url: cloudinary.url});
+        })
+    },
+    admin:{
+        index: function (req, res) {
+            let q = req.query.q;
+            let callback = function(result){
+                // This is value is used to
+                // populate the search input box
+                let searchValue = '';
+                if(q){
+                    searchValue = q;
+                }
+                res.render('admin/index', {posts: result.resources, searchValue: searchValue});
+            };
+            if(q){
+                // Filter based on search input
+                // if provided
+                cloudinary.api.resources(callback,
+                    { type: 'upload', prefix: q });
+            } else {
+                // If no search input, list all
+                cloudinary.api.resources(callback);
+            }
+        }
     }
 };

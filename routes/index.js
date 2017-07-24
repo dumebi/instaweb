@@ -18,4 +18,8 @@ router.get('/edit/:id', controller.edit);
 
 router.post('/update', controller.update);
 
+router.get('/admin', controller.admin.index);
+
+router.get('/:id', controller.find);
+
 module.exports = router;

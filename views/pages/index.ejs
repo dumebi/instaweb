@@ -19,7 +19,7 @@
                         <img src="<%= post.image %>" style="max-height: 150px">
                     </div>
                     <div class="content">
-                        <a class="header"><%= post.title %></a>
+                        <a href="/<%= post.image_id %>" class="header"><%= post.title %></a>
                         <div class="meta">
                                 <span class="date">
                                     <i class="calendar icon"></i> <%= post.created_at.getFullYear() %>
