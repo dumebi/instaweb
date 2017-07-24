@@ -25,21 +25,11 @@
                         <textarea rows="4" name="description" placeholder="Description"></textarea>
                     </div>
                     <div class="field">
-                        <input id="image" name="image" type="hidden" class="upload_field"/>
+                        <label>Image</label>
+                        <input name="image" type="hidden" placeholder="Image URL" id="url_text"/>
+                        <input name="image_id" id="image_id" type="hidden"/>
                     </div>
-                    <div class="field">
-                        <label>Tags</label>
-                        <div class="ui fluid multiple search selection dropdown" id="tag">
-                            <input name="tags" id="tags" type="hidden">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">Tags</div>
-                            <div class="menu">
-                                <div class="item" value="puppy">puppy</div>
-                                <div class="item" value="kitten">kitten</div>
-                            </div>
-                        </div>
-                    </div>
-                    <button onclick="upload_cloudinary()" class="ui button" type="button" id="upload_widget_opener">Upload with Widget</button>
+                    <button class="ui button" type="button" id="upload_widget_opener">Upload with Widget</button>
                     <button class="ui primary button" type="submit">Post</button>
                 </form>
             </div>

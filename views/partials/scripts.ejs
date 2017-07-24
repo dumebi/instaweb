@@ -2,17 +2,17 @@
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <script>
-    function upload_cloudinary() {
-        let tags = $('#tags').val();
-        console.log(tags);
-        cloudinary.openUploadWidget({cloud_name: 'dikejude49', upload_preset: 'ogjgvilv'}, {tags: tags }, { upload_preset: "ogjgvilv" },
-            function (error, result) {
+    document.getElementById("upload_widget_opener").addEventListener("click", function() {
+
+        cloudinary.openUploadWidget({ cloud_name: 'dikejude49', upload_preset: 'ogjgvilv'},
+            function(error, result) {
                 console.log(error, result)
                 // Push URL into text input
-                document.getElementById('image').value = result[0].url;
+                document.getElementById('url_text').value = result[0].url;
+                document.getElementById('image_id').value = result[0].public_id;
             });
 
-    }
+    }, false);
 
     $('#tag').dropdown({
         allowAdditions: true

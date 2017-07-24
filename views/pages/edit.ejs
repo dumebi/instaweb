@@ -25,11 +25,6 @@
                         <label>Description</label>
                         <textarea rows="4" name="description" placeholder="Description"><%= post.description %></textarea>
                     </div>
-                    <div class="field">
-                        <label>Rename Image ID</label>
-                        <input name="image_id" type="text" placeholder="image_id" value="<%= post.image_id %>"/>
-                    </div>
-
                     <input type="hidden" value="<%= post.image %>" name="image">
                     <input type="hidden" value="<%= post.image_id %>" name="old_id">
                     <button class="ui primary button" type="submit">Post</button>

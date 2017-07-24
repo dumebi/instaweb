@@ -14,7 +14,7 @@ router.post('/create', multipartMiddleware, controller.create);
 
 router.post('/destroy', controller.destroy);
 
-router.get('/edit', controller.edit);
+router.get('/edit/:id', controller.edit);
 
 router.post('/update', controller.update);
 

@@ -17,20 +17,19 @@ module.exports = {
     },
     create: function (req, res) {
         let post = new Model({
-            tags: req.body.tags,
             title: req.body.title,
             description: req.body.description,
             created_at: new Date(),
             // Now we are requesting the image
             // from a form text input
-            image: req.body.image
+            image: req.body.image,
+            image_id: req.body.image_id
         });
-        // Persist by saving
+
         post.save(function (err) {
             if(err){
                 res.send(err)
             }
-            // Redirect
             res.redirect('/');
         });
     },
@@ -65,18 +64,12 @@ module.exports = {
     },
     update: function (req, res) {
         let oldName = req.body.old_id
-        let newName = req.body.image_id;
-        cloudinary.v2.uploader.rename(oldName, newName,
-            function(error, result) {
-                if (error) res.send(error);
-                Model.findOneAndUpdate({image_id: oldName},
-                    Object.assign({}, req.body, {image: result.url}),
-                    function (err) {
-                        if (err) res.send(err);
+        Model.findOneAndUpdate({image_id: oldName},
+            Object.assign({}, req.body),
+            function (err) {
+                if (err) res.send(err);
 
-                        res.redirect('/');
-                    })
+                res.redirect('/');
             })
-
     }
 };
