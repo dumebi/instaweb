@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+    <h3 class="ui center aligned icon header">
+        Edit: <%= post.title %>
+    </h3>
+</header>
+
+<main>
+    <div class="ui grid container">
+        <div class="ui two column centered grid">
+            <div class="column">
+                <img class="ui medium centered image" src="<%= post.image %>">
+                <form action="/update" method="post" class="ui form">
+                    <div class="field">
+                        <label>Title</label>
+                        <input name="title" type="text" placeholder="Title" value="<%= post.title %>"/>
+                    </div>
+                    <div class="field">
+                        <label>Description</label>
+                        <textarea rows="4" name="description" placeholder="Description"><%= post.description %></textarea>
+                    </div>
+                    <input type="hidden" value="<%= post.image %>" name="image">
+                    <input type="hidden" value="<%= post.image_id %>" name="old_id">
+                    <button class="ui primary button" type="submit">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include ../partials/scripts %>
+</body>
+</html>
